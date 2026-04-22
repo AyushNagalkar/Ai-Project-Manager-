@@ -150,8 +150,13 @@ export default function AgentSidebar() {
     setSidebarWidth(w => w < COLLAPSED_THRESHOLD ? DEFAULT_WIDTH : MIN_WIDTH);
   }, []);
 
+  useEffect(() => {
+    if (isAuthPage) {
+      document.documentElement.style.setProperty('--sidebar-width', '0px');
+    }
+  }, [isAuthPage]);
+
   if (isAuthPage) {
-    document.documentElement.style.setProperty('--sidebar-width', '0px');
     return null;
   }
 
@@ -285,8 +290,8 @@ export default function AgentSidebar() {
                             background: isActive
                               ? `linear-gradient(90deg, ${agent.color}, ${agent.color}80)`
                               : isOnline
-                              ? 'rgba(34,197,94,0.5)'
-                              : 'rgba(239,68,68,0.5)',
+                                ? 'rgba(34,197,94,0.5)'
+                                : 'rgba(239,68,68,0.5)',
                             animation: isActive ? 'status-bar-pulse 3s ease-in-out infinite' : 'none',
                             transition: 'width 0.8s ease',
                           }}
