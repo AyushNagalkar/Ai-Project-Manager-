@@ -42,3 +42,6 @@ out/
 coverage/
 *.coverage
 .nyc_output
+
+#researh paper
+SmartPM_IEEE_Research_Paper.md
